@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+       let data=fetch("https://fakestoreapi.com/products")
+        data.then((e)=>e.json()).then((e)=>{
+            let res=e
+            let getDiv=document.createElement("div")
+            document.body.appendChild(getDiv)
+                getDiv.style.width="100%";
+                getDiv.style.height="100%";
+                getDiv.style.paddingTop="50px";
+                getDiv.style.paddingBottom="50px";
+                getDiv.style.backgroundColor="rgb(182, 238, 125)";
+                getDiv.style.display="flex";
+                getDiv.style.flexDirection="row";
+                getDiv.style.flexWrap="wrap";
+                getDiv.style.justifyContent="space-around";
+                getDiv.style.alignContent="space-around";
+                getDiv.style.gap="50px";
+        
+            console.log(res);
+            for(i of res){
+
+                let getDiv1=document.createElement("div");
+                let H1=document.createElement("h3")
+                let Image=document.createElement("img")
+                let Description=document.createElement("p")
+                let Price=document.createElement("h3")
+                let Rating=document.createElement("h3")
+
+                H1.innerHTML=i.title;
+                H1.style.color="rgb(5, 79, 5)";
+                Image.src=i.image;
+                Description.innerHTML=i.description;
+                Price.innerHTML="Price: ₹"+i.price;
+                Rating.innerHTML="Rating: "+i.rating.rate+"&#9733;";
+                Image.style.width="200px";
+                Image.style.height="150px";
+                Image.style.alignItems="center";
+                Image.style.position="relative";
+                Image.style.left="80px";
+                Image.addEventListener('mouseover', () => {
+                    Image.style.width="240px"; 
+                    Image.style.height="180px"; 
+                });
+                Image.addEventListener('mouseout', () => {
+                    Image.style.width="200px"; 
+                    Image.style.height="150px"; 
+                });
+                H1.style.textAlign="center";
+                H1.style.fontWeight="bold";
+                Price.style.textAlign="center";
+                Rating.style.textAlign="center";
+                getDiv1.appendChild(H1);
+                getDiv1.appendChild(Image);
+                getDiv1.appendChild(Description); 
+                getDiv1.appendChild(Price);
+                getDiv1.appendChild(Rating);
+                document.body.appendChild(getDiv1);
+                getDiv1.style.width="400px";
+                getDiv1.style.height="650px";
+                getDiv1.style.backgroundColor="azure";
+                getDiv1.style.border="2px solid";
+                getDiv1.style.borderRadius="5%"
+                getDiv1.style.display="flex";
+                getDiv1.style.flexDirection="column";
+                getDiv1.style.boxShadow="10px 10px 10px black";
+                getDiv1.style.justifyContent="space-around";
+                getDiv.appendChild(getDiv1);
+            }
+        });
+    </script>
+</body>
+</html>
